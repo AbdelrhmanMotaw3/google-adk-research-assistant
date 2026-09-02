@@ -4,6 +4,30 @@ Multi-agent research assistant built with **Google Agent Development Kit (ADK)**
 
 > **Academic integrity note**: This repository is an independent portfolio implementation demonstrating agentic workflow patterns with Google ADK and Vertex AI. It is **not** intended to be used as a course submission or as a replacement for completing academic work independently.
 
+### Quickstart
+
+```bash
+python -m venv .venv
+```
+
+Windows:
+
+```bash
+.venv\Scripts\activate
+```
+
+macOS/Linux:
+
+```bash
+source .venv/bin/activate
+```
+
+```bash
+pip install -e ".[dev]"
+cp .env.example .env
+research-assistant --query "Compare major approaches to retrieval-augmented generation (RAG) for enterprise assistants."
+```
+
 ### Why it’s interesting
 
 - **Composable workflow graph**: agents are orchestrated as explicit stages with typed handoffs.
@@ -37,7 +61,7 @@ flowchart TD
 - **Google GenAI client** (`google-genai`) with **Vertex AI** backend
 - **dotenv** configuration
 
-### Setup
+### Setup (detailed)
 
 ```bash
 git clone <your-repo-url>
@@ -92,6 +116,11 @@ GOOGLE_CLOUD_LOCATION=us-central1
 MODEL_NAME=gemini-2.5-flash
 ```
 
+Vertex AI authentication (ADC):
+
+- `gcloud auth application-default login`
+- Windows note: use `gcloud.cmd` if PowerShell script execution is restricted
+
 Optional service-account JSON (otherwise ADC is used):
 
 ```env
@@ -113,6 +142,15 @@ research-assistant --query "Compare major approaches to RAG for enterprise knowl
 Outputs:
 - a Markdown report printed to stdout
 - optionally, write to a file via `--out report.md`
+
+### Agentic workflow patterns (where to look)
+
+- **Prompt chaining**: `src/research_assistant/workflows/pipeline.py`
+- **Routing**: `src/research_assistant/agents/router.py`
+- **Parallelization**: `src/research_assistant/agents/sources.py` (`ParallelAgent`)
+- **Evaluator–optimizer**: `src/research_assistant/agents/refinement.py` (`LoopAgent` with a critic threshold)
+- **Validation / fact checking**: `src/research_assistant/agents/validation.py`
+- **Report generation**: `src/research_assistant/reporting/markdown.py`
 
 ### Tests
 
