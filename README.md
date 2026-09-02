@@ -47,7 +47,7 @@ flowchart TD
   S1 --> A[Source Aggregator]
   S2 --> A
   S3 --> A
-  A --> L[Refinement Loop (Draft <-> Critic)]
+  A --> L["Refinement Loop (Draft ↔ Critic)"]
   L --> F[Fact Check]
   F --> Y[Synthesis]
   Y --> C[Citation Formatter]
