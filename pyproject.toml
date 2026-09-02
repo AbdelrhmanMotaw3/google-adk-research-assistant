@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "google-adk-research-assistant"
+version = "0.1.0"
+description = "Multi-agent research assistant built with Google ADK and Vertex AI Gemini."
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+  "google-adk>=1.22.1",
+  "google-genai>=1.59.0",
+  "python-dotenv>=1.0.0",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8.0.0",
+]
+
+[project.scripts]
+research-assistant = "research_assistant.cli:main"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+

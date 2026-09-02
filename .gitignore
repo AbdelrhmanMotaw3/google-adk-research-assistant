@@ -1,0 +1,40 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyd
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+coverage.xml
+
+# Virtual envs
+.venv/
+venv/
+ENV/
+
+# Environment files (keep example)
+.env
+.env.*
+!.env.example
+
+# Google / credentials
+service-account*.json
+*service-account*.json
+*credentials*.json
+*.pem
+*.p12
+
+# Local artifacts / reports / logs
+*.log
+output*.txt
+research_report*.md
+reports/
+tmp/
+
+# OS / IDE
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
